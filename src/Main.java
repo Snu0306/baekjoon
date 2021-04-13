@@ -5,63 +5,47 @@ import java.util.StringTokenizer;
 
 public class Main {
 	
-	public static boolean[][] arr;
-	public static int min=64;
-	
+	public static int[] arr;
+	public static boolean[] visit;
+	public static StringBuilder sb = new StringBuilder();
+
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		StringTokenizer st = new StringTokenizer(br.readLine()," ");
-		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
 		int N = Integer.parseInt(st.nextToken());
 		int M = Integer.parseInt(st.nextToken());
 		
-		arr = new boolean[N][M];
 		
-		for(int i=0; i<N; i++) {
-			String chess = br.readLine();
-			for(int j=0; j<M; j++) {
-				if(chess.charAt(j)=='W') {
-					arr[i][j]=true; // 흰색이면 true
-				}else {
-					arr[i][j]=false;
-				}
-			}
-		}
 		
-		int N_row = N-7;
-		int M_col = M-7;
+		arr= new int[M];
+		visit = new boolean[N];
 		
-		for(int i=0; i<N_row; i++) {
-			for(int j=0; j<M_col; j++) {
-				find(i,j);
-			}
-		}
+		dfs(N,M,0);
 		
-		System.out.println(min);
-		
+		System.out.println(sb);
 	}
 	
-	public static void find(int x, int y) {
-		int end_x = x+8;
-		int end_y = y+8;
-		int count =0;
-		
-		boolean TF = arr[x][y]; // 첫번째 칸의 색 이거랑만 비교하면 됨
-		
-		for(int i=x; i<end_x; i++) {
-			for(int j=y; j<end_y; j++) {
-				if(arr[i][j] != TF) {
-					count++;
-				}
-				TF = (!TF); // 번갈아 가면서 바꿔주기 위해
+	public static void dfs(int N, int M, int depth) {
+		if(depth == M ) {
+			for(int val : arr) {
+				sb.append(val).append(" ");
 			}
-			TF=!TF;
+			sb.append("\n");
+			return;
 		}
 		
-		count = Math.min(count, 64-count);
-		min = Math.min(min,count);
+		for(int i=0; i<N; i++) {
+			if(!visit[i]) {
+				visit[i]= true;
+				arr[depth] = i+1;
+				dfs(N,M,depth+1);
+				visit[i] = false;
+			}
+		}
+		return;
 	}
+	
 	
 
 }
