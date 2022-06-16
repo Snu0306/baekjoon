@@ -20,11 +20,11 @@ public class Main {
 		while(N-->0) {
 			StringBuilder sb = new StringBuilder();
 			st = new StringTokenizer(br.readLine());
-			int papers = Integer.parseInt(st.nextToken()); //¹®¼­ÀÇ °³¼ö
-			int order = Integer.parseInt(st.nextToken()); // ±Ã±ÝÇÑ ¹®¼­°¡ ¸î¹øÂ° ³õ¿©ÀÖ´ÂÁö
-			int imp = 0; //±× ¹®¼­ÀÇ Áß¿äµµ
+			int papers = Integer.parseInt(st.nextToken()); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			int order = Integer.parseInt(st.nextToken()); // ï¿½Ã±ï¿½ï¿½ï¿½ í•œê¸€í…ŒìŠ¤íŠ¸ 
+			int imp = 0; //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿äµµ
 			
-			st = new StringTokenizer(br.readLine()); //¹®¼­ ÀÎµ¦½º º°·Î Áß¿äµµ
+			st = new StringTokenizer(br.readLine()); //ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿äµµ
 			
 		
 			for(int i=0; i<papers; i++) {
